@@ -1,0 +1,44 @@
+/****************************************************************
+* Name: Nicholas Scaramuzzi
+* Course: IOOP
+* Section: 07
+* Date: 09/28/15
+****************************************************************
+* ID: Lab# 3 Problem #1
+* Purpose: The Purpose of this class is to run the Game. 
+* The game is ran and A deck is initialized and a target score. 
+* Also the players get to input there names
+****************************************************************
+* Test Suite:
+* **************************************************************
+* Normal Cases: 
+* Input: Target:18	 
+* Expected Output:	WinningHand: 5,3,jack	LosingHand: 2,4,9
+* Input: 	Target: 13
+* Expected Output: WinninfHand: Jack,3, LosingHand: 3,3,3,	
+* Input: 	Target:24
+* Expected Output: 	WinningHand: jack, jack, ace , 3 LosingHand: 4,5,6
+* Input: 	Target:12
+* Expected Output: 	WinningHand ace,ace LosingHand 4,5,jack
+*
+* Boundary Cases:
+*
+* Input:  Target:50
+* Expected Output: WinningHand: 5,jack LosingHand: 2,3,4,5
+*
+* Input:  Target:10
+* Expected Output:  WinningHand: 3,3,3,ace LosingHand: jack, ace, king
+*
+* Extreme Cases:
+* Input:  Target:1
+* Expected Output:  Not possible random nmber generator can not produce
+******************************************************************
+*/
+
+
+// This is the code hat runs our program
+// It allows for two people to play a card
+// Creating a target number for the game
+//The target number is the number your cards to sum up to or are the product of 
+//So players have the choice if they want to drop or pick up cards to try and make 
+// there hand equal the target score.

@@ -1,4 +1,3 @@
-
 /****************************************************************
 * Name: Nicholas Scaramuzzi Zachary Leesman
 * Course: IOOP
@@ -6,12 +5,110 @@
 * Date: 12/13/15
 ****************************************************************
 * ID: Lab# 7 Problem #1
-* Purpose: The purpose of this class is to represent a player of the game. where a player has a name and a hand of cards.
-* Also this method features many, for instance like takeTurn which switches the turn for the player an prompts them to 
-* make the difficult choice of whether or not to drop a card or pick one up.
-* Also this is where the pick up or drop method is located. 
-* The methods within this class are crucial to game.
+* Purpose: The purpose of this class is to represent the deck of cards to be drawn from and the deck of cards consisting of
+*player’s dropped cards. this Class also features many methods that shuffle add to the scrap deck and a method to swap
+*the scrap deck with the empty deck of card that the players draw from.
+*
 ****************************************************************
+*When the deck runs out of cards it is swapped with the scrap deck 
+*and  shuffled 
+*this method allows for the game to be played for as many turns as needed to reach the target score
+*The methods for adding cards to the scrap deck is located in here.
+********************************************************
+*/
+import java.util.Scanner;
 
-// This is the player class which initializes the Players and lets them enter names
-//This class also has the takeTurn Method in it which runs some of the important questions the require user input
+public class Player {
+	Hand hand;
+	Deck deck = new Deck();
+	String name;
+	
+	Player(){
+		hand = new Hand();
+		name = "";
+	}
+	Player(String name){
+		hand = new Hand();
+		
+	}
+	public void takeTurn(){
+		displayHand();
+		if(hand.isEmpty()){
+			pickup();
+		}else if(hand.isFull()){
+			drop();
+		}else{
+			pickUpOrDrop();
+		}
+		hand.sumAndProduct();
+	}
+	
+	private void displayHand(){
+		hand.displayHand();
+		}
+	
+	
+	public String getName(){
+		System.out.println("Please enter a player name");
+		Scanner scan = new Scanner(System.in);
+		String playerName = scan.nextLine();
+		return playerName;
+	}
+	
+	void pickUpOrDrop(){
+		System.out.println("Would you like to draw a card or drop a card (enter 1 for draw card)(enter 2 to drop card)");
+		Scanner scan = new Scanner(System.in);
+		int reply = scan.nextInt();
+		if(reply == 1){
+			pickup();
+		}else{
+			drop();
+		}
+	}
+	
+	void pickup(){
+		String card = deck.drawCard();
+		System.out.println("Your card is: " + card);
+		hand.addCard(card);
+		deck.removeCard();
+	}
+	
+	void drop(){
+		boolean notValid = false;
+		int card = 0;	
+		do{
+		System.out.println("Which index would you like to drop? (Card1=0 Card2=1 Card3=2 Card4=3 Card5=4");
+		Scanner scan = new Scanner(System.in);
+		int reply2 = scan.nextInt();
+		if(reply2 > hand.getSize() - 1){
+			System.out.println("You only have " + hand.getSize() + " cards.");
+			notValid = true;
+		}else if (reply2 == 0) {
+			card = 0;
+			notValid = false;
+		}else if (reply2 == 1) {
+			card = 1;
+			notValid = false;
+		}else if (reply2 == 2) {
+			card = 2;
+			notValid = false;
+		}else if (reply2 == 3) {
+			card = 3;
+			notValid = false;
+		}else if (reply2 == 4) {
+			card = 4;
+			notValid = false;
+		}
+		}while(notValid);
+		deck.insertCard(hand.getCard(card));
+		hand.dropCard(card);
+		
+	}
+	boolean completeTurn(int target){
+		if(hand.getSum() == target || hand.getProduct() == target){
+			return false;
+		}else{
+		return true;
+		}
+	}
+}

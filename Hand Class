@@ -1,4 +1,5 @@
 
+
 /****************************************************************
 * Name: Nicholas Scaramuzzi Zachary Leesman
 * Course: IOOP
@@ -43,3 +44,195 @@
 //this class also has the system for finding if the cards in the hand 
 // are the product of the cards in the hand or sum of the cards in the hand
 // which determines if the target score has been reached an congradulates a winner
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Hand {
+	int sum;
+	int product;
+	ArrayList<String> hand;
+	
+	Hand(){
+		this.hand = new ArrayList<String>();
+		
+	}
+	
+	public void displayHand() {
+		if (this.hand.isEmpty()){
+			System.out.println("Your hand is empty");
+		}else if(isFull()){
+			System.out.println("Your hand is full");
+		}else{
+			System.out.println("Your hand:" + this.hand);
+		}
+	}
+	boolean isEmpty(){
+		if(this.hand.isEmpty()){
+			return true;
+		}else{
+			return false;
+		}
+		
+	}
+	
+	boolean isFull(){
+		if(this.hand.size() == 5){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	public void addCard(String card){
+		this.hand.add(card);
+	}
+	
+	void dropCard(int i){
+		this.hand.remove(i);
+		this.hand.add(i,this.hand.get(this.hand.size()-1));
+		this.hand.remove(this.hand.size()-1);
+	}
+	
+	public void sumAndProduct() {
+		int ace = aceValue();
+		int counter = 0;
+		sum = 0;
+		product = 1;
+		// this right here is going to loop through every position of the
+		// players hand and
+		// check to see if the card contains a specific String
+		// if the card contains the specific string it will add it by the
+		// product
+		// in an effort to get the target score.
+		for (int i = 0; i < hand.size(); i++) {
+			if (hand.get(counter).contains("2")) {
+				sum = sum + 2;
+			}
+			if (hand.get(counter).contains("3")) {
+				sum = sum + 3;
+			}
+			if (hand.get(counter).contains("4")) {
+				sum = sum + 4;
+			}
+			if (hand.get(counter).contains("5")) {
+				sum = sum + 5;
+			}
+			if (hand.get(counter).contains("6")) {
+				sum = sum + 6;
+			}
+			if (hand.get(counter).contains("7")) {
+				sum = sum + 7;
+			}
+			if (hand.get(counter).contains("8")) {
+				sum = sum + 8;
+			}
+			if (hand.get(counter).contains("9")) {
+				sum = sum + 9;
+			}
+			if (hand.get(counter).contains("10")) {
+				sum = sum + 10;
+			}
+			if (hand.get(counter).contains("Jack")) {
+				sum = sum + 10;
+			}
+			if (hand.get(counter).contains("Queen")) {
+				sum = sum + 10;
+			}
+			if (hand.get(counter).contains("King")) {
+				sum = sum + 10;
+			}
+			if (hand.get(counter).contains("Ace")) {
+				sum = ace + sum;
+			}
+			counter++;
+		}
+		counter = 0;
+		
+		// this right here is going to loop through every position of the
+		// players hand and
+		// check to see if the card contains a specific String
+		// if the card contains the specific string it will multiply it by the
+		// product
+		// in an effort to get the target score.
+		for (int i = 0; i < hand.size(); i++) {
+			if (hand.get(counter).contains("2")) {
+				product = product * 2;
+			}
+			if (hand.get(counter).contains("3")) {
+				product = product * 3;
+			}
+			if (hand.get(counter).contains("4")) {
+				product = product * 4;
+			}
+			if (hand.get(counter).contains("5")) {
+				product = product * 5;
+			}
+			if (hand.get(counter).contains("6")) {
+				product = product * 6;
+			}
+			if (hand.get(counter).contains("7")) {
+				product = product * 7;
+			}
+			if (hand.get(counter).contains("8")) {
+				product = product * 8;
+			}
+			if (hand.get(counter).contains("9")) {
+				product = product * 9;
+			}
+			if (hand.get(counter).contains("10")) {
+				product = product * 10;
+			}
+			if (hand.get(counter).contains("Jack")) {
+				product = product * 10;
+			}
+			if (hand.get(counter).contains("Queen")) {
+				product = product * 10;
+			}
+			if (hand.get(counter).contains("King")) {
+				product = product * 10;
+			}
+			if (hand.get(counter).contains("Ace")) {
+				product = ace * product;
+			}
+			counter++;
+		}
+		System.out.println("Sum is:" + sum);
+		System.out.println("Product is:" + product);
+	}
+	
+	int containsCard(){
+		return 0;	
+	}
+	
+	int aceValue(){
+		boolean invalid = false;
+		Scanner scan = new Scanner(System.in);
+		do{
+			System.out.println("Should the ace be a 1 or an 11");
+			System.out.println("Enter 1 for 1 and 11 for 11");
+			int aceValue = scan.nextInt();
+			if(aceValue == 1 || aceValue == 11){
+				invalid = false;
+				return aceValue;
+			}else{
+				System.out.println("Sorry, invalid aceValue, try again");
+				invalid = true;
+				return 0;
+			}
+		}while(invalid);
+	}
+	int getSize(){
+		return this.hand.size();
+	}
+	String getCard(int card){
+		return hand.get(card);
+	}
+	int getSum(){
+		return this.sum;
+	}
+	int getProduct(){
+		return this.product;
+	}
+	
+}

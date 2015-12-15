@@ -42,3 +42,45 @@
 //The target number is the number your cards to sum up to or are the product of 
 //So players have the choice if they want to drop or pick up cards to try and make 
 // there hand equal the target score.
+
+import java.util.Scanner;
+
+public class Game {
+	public static void main(String[] args) {
+		int target = (int) (Math.random() * (50 - 10)) + 10;
+		Deck Deck = new Deck();
+		Player player = new Player();
+		Player player1 = new Player(player.getName());
+		Player player2 = new Player(player.getName());
+		while (player1.completeTurn(target) || player2.completeTurn(target)) {
+			System.out.println("It's player1's turn");
+			System.out.println("The target number is: " + target);
+			player1.takeTurn();
+			if (!player1.completeTurn(target)) {
+				System.out.println("Player 1 has reached the target. This is the last turn.");
+				System.out.println("It's player2's turn");
+				System.out.println("The target number is: " + target);
+				player2.takeTurn();
+			} else {
+				System.out.println("It's player2's turn");
+				System.out.println("The target number is: " + target);
+				player2.takeTurn();
+			}
+		}
+		if (!player1.completeTurn(target) && !player2.completeTurn(target)) {
+			System.out.println("The game is a tie!");
+		} else if (!player1.completeTurn(target)) {
+			System.out.println(player1.getName() + "Wins!");
+		} else {
+			System.out.println("Player 2 has reached the target. This is the last turn.");
+			System.out.println("It's player1's turn");
+			System.out.println("The target number is: " + target);
+			player1.takeTurn();
+			if (!player1.completeTurn(target)) {
+				System.out.println("The game is a tie!");
+			} else {
+				System.out.println(player2.getName() + "Wins!");
+			}
+		}
+	}
+}

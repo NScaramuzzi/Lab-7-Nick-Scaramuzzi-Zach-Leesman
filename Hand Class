@@ -1,0 +1,45 @@
+
+/****************************************************************
+* Name: Nicholas Scaramuzzi Zachary Leesman
+* Course: IOOP
+* Section: 07
+* Date: 12/13/15
+****************************************************************
+* ID: Lab# 7 Problem #1
+* Purpose: This Class is to represent the players hand. 
+* In this class we also have the sum and product method that adds all the cards in the hand up for the sum 
+* and multiplies all the cards in the hand for the product
+****************************************************************
+* Test Suite:
+* **************************************************************
+* Normal Cases: 
+* Input: Target: 24	
+* Expected Output:	 Winninghand:jack, 5, 7, 2 - (sum of the cards in hand = the target score)
+* Input: 	Target: 2	
+* Expected Output: 	Winninghand: Ace,2 (product of two cards in hand = the target score)
+* Input: 	Target: 20	
+* Expected Output: 	Winninghand: queen,2 (product of two cards in hand = the target score)
+* Input: 	Target: 22
+* Expected Output: 	 Winninghand:6, 2, 5, 7, 2 - (sum of the cards in hand = the target score)
+* Input:	Target: 40	
+* Expected Output:  Winninghand: jack,4 (product of two cards in hand = the target score)
+* Input:  Target: 10	
+* Expected Output:   Winninghand:2, 3, 4, ace, - (sum of the cards in hand = the target score)
+*
+* Boundary Cases:
+*
+* Input:  Target: 50
+* Expected Output:  WinningHand: 5,king
+* Input:  Target: 10
+* Expected Output: WinningHand:jack 
+*
+* Extreme Cases:
+* Input: Target: 1
+* Expected Output:  Ace 
+******************************************************************
+*/
+
+// This is the hand class this code is specifically for creating the player hand 
+//this class also has the system for finding if the cards in the hand 
+// are the product of the cards in the hand or sum of the cards in the hand
+// which determines if the target score has been reached an congradulates a winner

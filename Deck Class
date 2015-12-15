@@ -1,0 +1,18 @@
+/****************************************************************
+* Name: Nicholas Scaramuzzi Zachary Leesman
+* Course: IOOP
+* Section: 07
+* Date: 12/13/15
+****************************************************************
+* ID: Lab# 7 Problem #1
+* Purpose: The purpose of this class is to represent the deck of cards to be drawn from and the deck of cards consisting of
+*player’s dropped cards. this Class also features many methods that shuffle add to the scrap deck and a method to swap
+*the scrap deck with the empty deck of card that the players draw from.
+*
+****************************************************************
+*When the deck runs out of cards it is swapped with the scrap deck 
+*and  shuffled 
+*this method allows for the game to be played for as many turns as needed to reach the target score
+*The methods for adding cards to the scrap deck is located in here.
+********************************************************
+*/
